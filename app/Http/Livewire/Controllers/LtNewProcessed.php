@@ -115,13 +115,13 @@ class LtNewProcessed     extends DataTableComponent
                     if (in_array('RR', $selections)) {
                         unset($value[array_search('100', $value)]);
                         if (!empty($value)) {
-                            $builder->where('random_routeing', '!=', null)->orWhereIn('track_id', array_values($value));
+                            $builder->where('clx_messages.random_routeing', '!=', null)->orWhereIn('clx_messages.track_id', array_values($value));
                         } else {
-                            $builder->where('random_routeing', '!=', null);
+                            $builder->where('clx_messages.random_routeing', '!=', null);
                         }
                     }
                     else {
-                        $builder->whereIn('track_id', array_values($value));
+                        $builder->whereIn('clx_messages.track_id', array_values($value));
                     }
                 })
         ];
