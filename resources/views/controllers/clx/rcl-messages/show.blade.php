@@ -201,17 +201,24 @@
                                             <option value="=" selected>At</option>
                                             <option value="<">Before</option>
                                             <option value=">">After</option>
+                                            <option value="callsign">Interval</option>
                                         </select>
                                         <input type="number" name="entry_time_requirement" id="entry_time_requirement" class="form-control form-conrtol-sm" value="{{ $message->entry_time }}" maxlength="4">
-                                        {{--                                        <script type="module">--}}
-                                        {{--                                            $('#entry_time_type').on('change', function () {--}}
-                                        {{--                                                if (this.value == '') {--}}
-                                        {{--                                                    $('#entry_time_requirement').hide();--}}
-                                        {{--                                                } else {--}}
-                                        {{--                                                    $('#entry_time_requirement').show();--}}
-                                        {{--                                                }--}}
-                                        {{--                                            });--}}
-                                        {{--                                        </script>--}}
+                                        <input type="text" name="interval_callsign" id="interval_callsign" class="form-control form-conrtol-sm" value="" style="display: none;" placeholder="Callsign of cleared aircraft">
+                                        <input type="number" name="interval_minutes" id="interval_minutes" class="form-control form-conrtol-sm" value="" style="display: none;" maxlength="4" placeholder="Minutes (+/-)">
+                                        <script type="module">
+                                            $('#entry_time_type').on('change', function () {
+                                                if (this.value == 'callsign') {
+                                                    $('#entry_time_requirement').hide();
+                                                    $('#interval_callsign').show();
+                                                    $('#interval_minutes').show();
+                                                } else {
+                                                    $('#entry_time_requirement').show();
+                                                    $('#interval_callsign').hide();
+                                                    $('#interval_minutes').hide();
+                                                }
+                                            });
+                                        </script>
                                     </div>
                                 </div>
                                 <hr class="my-3">
